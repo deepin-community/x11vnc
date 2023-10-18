@@ -1,0 +1,13 @@
+Description: Add keywords to x11vnc.desktop file
+As Lintian recommends, some keywords are added.
+Forwarded: not-needed
+
+Last-Update: 2019-04-07
+
+--- x11vnc-0.9.16.orig/x11vnc.desktop
++++ x11vnc-0.9.16/x11vnc.desktop
+@@ -8,3 +8,4 @@ Type=Application
+ StartupNotify=false
+ #StartupWMClass=x11vnc_port_prompt
+ Categories=Network;RemoteAccess;
++Keywords=VNC;Server;Screencast

@@ -1,0 +1,3 @@
+Tests: allow-connections
+Depends: @, xvfb, tigervnc-viewer, psmisc
+Restrictions: allow-stderr
