@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -x
+
+DNUM=$((100 + RANDOM % 899))
+TMP=/tmp/x11vnc_allow-connections_result
+SLEEP=30 #Test duration will be more than $SLEEP * 3
+
+# Run x11vnc on a fresh Xserver
+x11vnc -create 2> /dev/null 1> /dev/null &
+
+# Create secondary Xserver
+# and connect to first trough VNC
+(
+  Xvfb :$DNUM -screen 0 1024x768x24 &
+  sleep $SLEEP &&                     \
+  DISPLAY=:$DNUM xtigervncviewer localhost
+  echo Result: $? > $TMP
+) &
+
+# Long sleep and kill VNC server
+sleep $(($SLEEP * 2))
+killall x11vnc
+wait
+killall Xvfb
+killall xtigervncviewer
+sleep $SLEEP
+
+# Check results
+cat $TMP | grep '0$' 1> /dev/null

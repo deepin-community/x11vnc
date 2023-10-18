@@ -1,0 +1,20 @@
+Description: Use $PKG_CONFIG
+Author: Antoni Villalonga <antoni@friki.cat>
+Forwarded: not-needed
+Last-Update: 2019-04-08
+
+--- x11vnc-0.9.16.orig/configure.ac
++++ x11vnc-0.9.16/configure.ac
+@@ -368,9 +368,9 @@ if test "x$with_avahi" != "xno"; then
+ 		AVAHI_LIBS="-L$with_avahi/lib -lavahi-common -lavahi-client"
+ 		echo "using $with_avahi"
+ 		with_avahi=yes
+-	elif pkg-config --atleast-version=0.6.4 avahi-client >/dev/null 2>&1; then
+-		AVAHI_CFLAGS=`pkg-config --cflags avahi-client`
+-		AVAHI_LIBS=`pkg-config --libs avahi-client`
++	elif $PKG_CONFIG --atleast-version=0.6.4 avahi-client >/dev/null 2>&1; then
++		AVAHI_CFLAGS=`$PKG_CONFIG --cflags avahi-client`
++		AVAHI_LIBS=`$PKG_CONFIG --libs avahi-client`
+ 		with_avahi=yes
+ 		echo yes
+ 	else

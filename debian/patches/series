@@ -1,0 +1,7 @@
+0000-usepkgconfig.diff
+0001-Xdummy-man-page.patch
+0002-fix-typos.patch
+0003-x11vnc.desktop-keywords.patch
+0004-x11vnc.ftbfs-gcc10.patch
+0005-scan-limit-access-to-shared-memory-segments-to-curre.patch
+0006-fix-manpage-acute-accents.patch

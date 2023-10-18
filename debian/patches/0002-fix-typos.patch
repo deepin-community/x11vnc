@@ -1,0 +1,219 @@
+Description: Fix some typos on man pages and binary files
+Author: Antoni Villalonga <antoni@friki.cat>
+Last-Update: 2019-04-07
+Forwarded: https://github.com/LibVNC/x11vnc/commit/dec6ca153d646515adc47eff643cc986efe0b184
+
+--- x11vnc-0.9.16.orig/ChangeLog
++++ x11vnc-0.9.16/ChangeLog
+@@ -511,7 +511,7 @@
+ 	  in unixpw state.  Monitor broken XDAMAGE reports when
+ 	  OpenGL apps like beryl are running.  Implement simple
+ 	  kbdReleaseAllKeys, setSingleWindow, setServerInput actions
+-	  (ultravnc extentions).  Try to send XDM the username in
++	  (ultravnc extensions).  Try to send XDM the username in
+ 	  FINDCREATEDISPLAY, also try .dmrc before .xsession.
+ 
+ 2007-01-31  Karl Runge <runge@karlrunge.com>
+--- x11vnc-0.9.16.orig/src/cleanup.c
++++ x11vnc-0.9.16/src/cleanup.c
+@@ -492,7 +492,7 @@ static void crash_shell(void) {
+ 		}
+ 
+ 		if (*str == 'q' && *(str+1) == '\0') {
+-			fprintf(stderr, "quiting.\n");
++			fprintf(stderr, "quitting.\n");
+ 			return;
+ 		} else if (*str == 'h' && *(str+1) == '\0') {
+ 			crash_shell_help();
+--- x11vnc-0.9.16.orig/src/help.c
++++ x11vnc-0.9.16/src/help.c
+@@ -3614,7 +3614,7 @@ void print_help(int mode) {
+ "-ncache_no_dtchange    In -ncache mode, do not try to guess when the desktop\n"
+ "                       (viewport) changes to another one (i.e. another\n"
+ "                       workarea).  The default is to try to guess and when\n"
+-"                       detected try to make the transistion more smoothly.\n"
++"                       detected try to make the transition more smoothly.\n"
+ "\n"
+ "-ncache_no_rootpixmap  In -ncache mode, do not try to snapshot the desktop\n"
+ "                       background to use in guessing or reconstructing window\n"
+@@ -3716,7 +3716,7 @@ void print_help(int mode) {
+ "                       \"mode\" can be \"never\" (same as -nowirecopyrect)\n"
+ "                       to never try the copyrect, \"top\" means only do it if\n"
+ "                       the window was not covered by any other windows, and\n"
+-"                       \"always\" means to translate the orginally unobscured\n"
++"                       \"always\" means to translate the originally unobscured\n"
+ "                       region (this may look odd as the remaining pieces come\n"
+ "                       in, but helps on a slow link).  Default: \"%s\"\n"
+ "\n"
+@@ -3990,7 +3990,7 @@ void print_help(int mode) {
+ "                       to \"eat\" much of that pointer input before re-polling\n"
+ "                       the screen and sending out framebuffer updates. The\n"
+ "                       mode number \"n\" can be 0 to %d and selects one of\n"
+-"                       the schemes desribed below.\n"
++"                       the schemes described below.\n"
+ "\n"
+ "                       Note that the -wireframe and -scrollcopyrect modes\n"
+ "                       complement -pointer_mode by detecting (and improving)\n"
+@@ -4060,7 +4060,7 @@ void print_help(int mode) {
+ "                       read rate may be much faster.  \"x11perf -getimage500\"\n"
+ "                       can be used to get a lower bound (remember to factor\n"
+ "                       in the bytes per pixel).  It is up to you to estimate\n"
+-"                       the network bandwith and latency to clients.  For the\n"
++"                       the network bandwidth and latency to clients.  For the\n"
+ "                       latency the ping(1) command can be used.\n"
+ "\n"
+ "                       For convenience there are some aliases provided,\n"
+@@ -5776,7 +5776,7 @@ void print_help(int mode) {
+ "                       you can still specify these parameters on the command\n"
+ "                       line, they just cannot be invoked via remote-control.\n"
+ "-safer                 Equivalent to: -novncconnect -noremote and prohibiting\n"
+-"                       -gui and the -connect file. Shuts off communcation\n"
++"                       -gui and the -connect file. Shuts off communication\n"
+ "                       channels.\n"
+ "-privremote            Perform some sanity checks and disable remote-control\n"
+ "                       commands if it appears that the X DISPLAY and/or\n"
+@@ -6032,7 +6032,7 @@ void nopassword_warning_msg(int gotloc)
+ "#@                                                           @#\n"
+ "#@  Or using the x11vnc SSL options: -ssl and -stunnel       @#\n"
+ "#@                                                           @#\n"
+-"#@  Please Read the documention for more info about          @#\n"
++"#@  Please Read the documentation for more info about        @#\n"
+ "#@  passwords, security, and encryption.                     @#\n"
+ "#@                                                           @#\n"
+ "#@    http://www.karlrunge.com/x11vnc/faq.html#faq-passwd    @#\n"
+--- x11vnc-0.9.16.orig/src/ssltools.h
++++ x11vnc-0.9.16/src/ssltools.h
+@@ -103,7 +103,7 @@ char genCA[] =
+ "private_key	= $dir/private/cakey.pem # The private key\n"
+ "RANDFILE	= $dir/private/.rand	# private random number file\n"
+ "\n"
+-"x509_extensions	= usr_cert		# The extentions to add to the cert\n"
++"x509_extensions	= usr_cert		# The extensions to add to the cert\n"
+ "\n"
+ "name_opt 	= ca_default		# Subject Name options\n"
+ "cert_opt 	= ca_default		# Certificate field options\n"
+@@ -139,7 +139,7 @@ char genCA[] =
+ "default_keyfile 	= privkey.pem\n"
+ "distinguished_name	= req_distinguished_name\n"
+ "attributes		= req_attributes\n"
+-"x509_extensions	= v3_ca	# The extentions to add to the self signed cert\n"
++"x509_extensions	= v3_ca	# The extensions to add to the self signed cert\n"
+ "\n"
+ "string_mask = nombstr\n"
+ "\n"
+--- x11vnc-0.9.16.orig/src/tkx11vnc.h
++++ x11vnc-0.9.16/src/tkx11vnc.h
+@@ -506,7 +506,7 @@ char gui_code[] = "";
+ "display (VNC_CONNECT rootwin property) being polled by the x11vnc server.\n"
+ "To change or set the X display to use do \\\"Displays -> display\\\".\n"
+ "\n"
+-"Sometimes the \\\"-connect /path/to/filename\\\" is used as the communcation\n"
++"Sometimes the \\\"-connect /path/to/filename\\\" is used as the communication\n"
+ "channel.  The running x11vnc has to know that \\\"/path/to/filename\\\"\n"
+ "is the communication channel (i.e. it is using the same -connect option).\n"
+ "\"\n"
+@@ -1227,7 +1227,7 @@ char gui_code[] = "";
+ "provides an interface to each of the many x11vnc command line options and\n"
+ "remote control commands.  See \\\"Help -> all\\\" for much info about x11vnc.\n"
+ "\n"
+-"For a simplier gui, run x11vnc in \\\"tray\\\" or \\\"icon\\\" mode such as\n"
++"For a simpler gui, run x11vnc in \\\"tray\\\" or \\\"icon\\\" mode such as\n"
+ "\\\"-gui tray\\\", \\\"-gui icon\\\", or \\\"-gui tray=setpass\\\".  In that\n"
+ "mode the full gui is only available under \\\"Advanced ...\\\".\n"
+ "\n"
+@@ -3366,7 +3366,7 @@ char gui_code[] = "";
+ "proc menu_help {item} {\n"
+ "	if ![help_win $item] {\n"
+ "		textwin \"nohelp\" \"No help available\" \\\n"
+-"			\"Sorry, no help avaiable for \\\"$item\\\"\"\n"
++"			\"Sorry, no help available for \\\"$item\\\"\"\n"
+ "	}\n"
+ "}\n"
+ "\n"
+--- x11vnc-0.9.16.orig/src/v4l.c
++++ x11vnc-0.9.16/src/v4l.c
+@@ -1339,7 +1339,7 @@ static void parse_str(char *str, char **
+ 		}
+                 if (stat(s, &sbuf) != 0) {
+ 			rfbLogPerror("stat");
+-			rfbLog("You will need to specify the video device more explicity.\n");
++			rfbLog("You will need to specify the video device more explicitly.\n");
+ 		}
+ 
+ 		*dev = s;
+--- x11vnc-0.9.16.orig/x11vnc.1
++++ x11vnc-0.9.16/x11vnc.1
+@@ -4063,7 +4063,7 @@ the window will be pushed to top in the
+ In \fB-ncache\fR mode, do not try to guess when the desktop
+ (viewport) changes to another one (i.e. another
+ workarea).  The default is to try to guess and when
+-detected try to make the transistion more smoothly.
++detected try to make the transition more smoothly.
+ .PP
+ \fB-ncache_no_rootpixmap\fR
+ .IP
+@@ -4181,7 +4181,7 @@ Shorter aliases:  \fB-wcr\fR [mode]  and
+ "mode" can be "never" (same as \fB-nowirecopyrect)\fR
+ to never try the copyrect, "top" means only do it if
+ the window was not covered by any other windows, and
+-"always" means to translate the orginally unobscured
++"always" means to translate the originally unobscured
+ region (this may look odd as the remaining pieces come
+ in, but helps on a slow link).  Default: "always"
+ .IP
+@@ -4488,7 +4488,7 @@ when dragging or scrolling.  So a scheme
+ to "eat" much of that pointer input before re-polling
+ the screen and sending out framebuffer updates. The
+ mode number \fIn\fR can be 0 to 4 and selects one of
+-the schemes desribed below.
++the schemes described below.
+ .IP
+ Note that the \fB-wireframe\fR and \fB-scrollcopyrect__mode_s\fR
+ complement \fB-pointer_mode\fR by detecting (and improving)
+@@ -4568,7 +4568,7 @@ h/w (e.g. SunRay, shadowfb, dummy driver
+ read rate may be much faster.  "x11perf \fB-getimage500"\fR
+ can be used to get a lower bound (remember to factor
+ in the bytes per pixel).  It is up to you to estimate
+-the network bandwith and latency to clients.  For the
++the network bandwidth and latency to clients.  For the
+ latency the 
+ .IR ping (1)
+ command can be used.
+@@ -6780,7 +6780,7 @@ line, they just cannot be invoked via re
+ \fB-safer\fR
+ .IP
+ Equivalent to: \fB-novncconnect\fR \fB-noremote\fR and prohibiting
+-\fB-gui\fR and the \fB-connect\fR file. Shuts off communcation
++\fB-gui\fR and the \fB-connect\fR file. Shuts off communication
+ channels.
+ .PP
+ \fB-privremote\fR
+--- x11vnc-0.9.16.orig/tkx11vnc
++++ x11vnc-0.9.16/tkx11vnc
+@@ -495,7 +495,7 @@ state if successful.  Usually the channe
+ display (VNC_CONNECT rootwin property) being polled by the x11vnc server.
+ To change or set the X display to use do \"Displays -> display\".
+ 
+-Sometimes the \"-connect /path/to/filename\" is used as the communcation
++Sometimes the \"-connect /path/to/filename\" is used as the comunication
+ channel.  The running x11vnc has to know that \"/path/to/filename\"
+ is the communication channel (i.e. it is using the same -connect option).
+ "
+@@ -1216,7 +1216,7 @@ tkx11vnc is a simple frontend to x11vnc.
+ provides an interface to each of the many x11vnc command line options and
+ remote control commands.  See \"Help -> all\" for much info about x11vnc.
+ 
+-For a simplier gui, run x11vnc in \"tray\" or \"icon\" mode such as
++For a simpler gui, run x11vnc in \"tray\" or \"icon\" mode such as
+ \"-gui tray\", \"-gui icon\", or \"-gui tray=setpass\".  In that
+ mode the full gui is only available under \"Advanced ...\".
+ 
+@@ -3355,7 +3355,7 @@ proc do_var {item} {
+ proc menu_help {item} {
+ 	if ![help_win $item] {
+ 		textwin "nohelp" "No help available" \
+-			"Sorry, no help avaiable for \"$item\""
++			"Sorry, no help available for \"$item\""
+ 	}
+ }
+ 
